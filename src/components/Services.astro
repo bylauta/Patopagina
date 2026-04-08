@@ -1,0 +1,99 @@
+---
+const services = [
+  {
+    title: "Auto",
+    description: "Protección automotriz con compañías líderes. Seguridad total para tu vehículo.",
+    icon: "🚗",
+    color: "from-blue-500/10 to-blue-600/5",
+  },
+  {
+    title: "Moto",
+    description: "Cobertura integral para tu moto. Circulá tranquilo con el respaldo que necesitás.",
+    icon: "🏍️",
+    color: "from-purple-500/10 to-purple-600/5",
+  },
+  {
+    title: "Hogar",
+    description: "Tranquilidad total para tu refugio más preciado. Protegé lo que más importa.",
+    icon: "🏠",
+    color: "from-green-500/10 to-green-600/5",
+  },
+  {
+    title: "Comercio",
+    description: "Soluciones diseñadas para el crecimiento de tu empresa. Cuidá tu trabajo.",
+    icon: "🏢",
+    color: "from-amber-500/10 to-amber-600/5",
+  },
+  {
+    title: "ART",
+    description: "Aseguradoras de riesgo de trabajo. Protegé a tu equipo con la cobertura adecuada.",
+    icon: "🦺",
+    color: "from-red-500/10 to-red-600/5",
+  },
+  {
+    title: "Electrónicos",
+    description: "Asegurá tus herramientas de estudio y trabajo. Equipos siempre protegidos.",
+    icon: "💻",
+    color: "from-cyan-500/10 to-cyan-600/5",
+  },
+];
+---
+
+<section id="servicios" class="bg-background py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <span
+        class="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+      >
+        Nuestros Servicios
+      </span>
+      <h2
+        class="section-title mb-4 text-4xl font-extrabold tracking-tight text-dark md:text-5xl"
+      >
+        Cotizá tu seguro online ahora
+      </h2>
+      <p class="section-description mx-auto max-w-2xl text-lg text-muted">
+        Atención personalizada para encontrar el seguro que mejor se adapta a
+        vos. Compará coberturas de auto, moto, hogar, comercio y más entre las mejores aseguradoras de Argentina.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service) => (
+          <a
+            href="#contacto"
+            class="service-card group relative overflow-hidden rounded-2xl border border-muted-light/20 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5"
+          >
+            <div
+              class={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+            />
+            <div class="relative">
+              <span class="mb-4 block text-4xl">{service.icon}</span>
+              <h3 class="mb-2 text-xl font-bold text-dark">{service.title}</h3>
+              <p class="text-muted leading-relaxed">{service.description}</p>
+              <div class="mt-4 flex items-center gap-1 text-sm font-semibold text-primary opacity-0 transition-all duration-300 group-hover:opacity-100">
+                Cotizar
+                <svg
+                  class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

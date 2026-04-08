@@ -1,0 +1,136 @@
+---
+const navLinks = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <!-- Logo -->
+    <a href="#inicio" class="-ml-8 flex items-center">
+      <img
+        src="/logo header.png"
+        alt="Pato Ward Asesor de Seguros"
+        class="h-28 w-auto md:h-32"
+      />
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden items-center gap-8 md:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="nav-link relative text-sm font-medium text-white/90 transition-colors hover:text-white"
+          >
+            {link.label}
+            <span class="nav-link-underline absolute -bottom-1 left-0 h-0.5 w-0 rounded-full bg-accent transition-all duration-300"></span>
+          </a>
+        ))
+      }
+      <a
+        href="#contacto"
+        class="rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-dark transition-all hover:scale-105 hover:bg-accent-dark hover:shadow-lg"
+      >
+        Cotizá Ahora
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="flex flex-col gap-1.5 md:hidden"
+      aria-label="Menú"
+    >
+      <span class="hamburger-line h-0.5 w-6 bg-white transition-all"></span>
+      <span class="hamburger-line h-0.5 w-6 bg-white transition-all"></span>
+      <span class="hamburger-line h-0.5 w-6 bg-white transition-all"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="max-h-0 overflow-hidden transition-all duration-300 md:hidden"
+  >
+    <div class="flex flex-col gap-4 bg-primary-dark/95 px-6 py-6 backdrop-blur">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link text-lg font-medium text-white/90 transition-colors hover:text-accent"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="#contacto"
+        class="mt-2 rounded-full bg-accent px-6 py-3 text-center font-semibold text-dark transition-all hover:bg-accent-dark"
+      >
+        Cotizá Ahora
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById("navbar");
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  let isMenuOpen = false;
+
+  // Scroll effect
+  window.addEventListener("scroll", () => {
+    if (!navbar) return;
+    if (window.scrollY > 50) {
+      navbar.classList.add("bg-primary-dark/95", "backdrop-blur-md", "shadow-lg");
+      navbar.classList.remove("bg-transparent");
+    } else {
+      navbar.classList.remove("bg-primary-dark/95", "backdrop-blur-md", "shadow-lg");
+      navbar.classList.add("bg-transparent");
+    }
+  });
+
+  // Mobile menu toggle
+  menuBtn?.addEventListener("click", () => {
+    isMenuOpen = !isMenuOpen;
+    if (mobileMenu) {
+      mobileMenu.style.maxHeight = isMenuOpen
+        ? mobileMenu.scrollHeight + "px"
+        : "0";
+    }
+    const lines = menuBtn.querySelectorAll(".hamburger-line");
+    lines[0]?.classList.toggle("translate-y-2");
+    lines[0]?.classList.toggle("rotate-45");
+    lines[1]?.classList.toggle("opacity-0");
+    lines[2]?.classList.toggle("-translate-y-2");
+    lines[2]?.classList.toggle("-rotate-45");
+  });
+
+  // Nav link hover animation
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    const underline = link.querySelector(".nav-link-underline") as HTMLElement;
+    if (!underline) return;
+    link.addEventListener("mouseenter", () => {
+      underline.style.width = "100%";
+    });
+    link.addEventListener("mouseleave", () => {
+      underline.style.width = "0";
+    });
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      isMenuOpen = false;
+      if (mobileMenu) mobileMenu.style.maxHeight = "0";
+    });
+  });
+</script>

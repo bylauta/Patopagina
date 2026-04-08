@@ -1,0 +1,65 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Contactanos",
+    description: "Escribinos por WhatsApp o completá el formulario. Contanos qué necesitás asegurar.",
+  },
+  {
+    number: "02",
+    title: "Te asesoramos",
+    description: "Analizamos tu situación y te presentamos las mejores opciones de cobertura.",
+  },
+  {
+    number: "03",
+    title: "Elegí tu cobertura",
+    description: "Comparamos precios y beneficios entre compañías para que elijas la mejor opción.",
+  },
+  {
+    number: "04",
+    title: "Quedás protegido",
+    description: "Gestionamos toda la documentación. Tu póliza queda activa de forma inmediata.",
+  },
+];
+---
+
+<section class="bg-background py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <span
+        class="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+      >
+        ¿Cómo funciona?
+      </span>
+      <h2
+        class="section-title mb-4 text-4xl font-extrabold tracking-tight text-dark md:text-5xl"
+      >
+        Simple, rápido y sin vueltas
+      </h2>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative grid gap-8 md:grid-cols-4">
+      <!-- Connector line (desktop) -->
+      <div
+        class="process-line absolute top-12 right-0 left-0 hidden h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20 md:block"
+      >
+      </div>
+
+      {
+        steps.map((step) => (
+          <div class="process-step group relative text-center">
+            <div class="relative z-10 mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-4 border-primary/20 bg-white text-3xl font-extrabold text-primary transition-all duration-500 group-hover:border-accent group-hover:bg-primary group-hover:text-white group-hover:scale-110">
+              {step.number}
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-dark">{step.title}</h3>
+            <p class="text-sm leading-relaxed text-muted">
+              {step.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

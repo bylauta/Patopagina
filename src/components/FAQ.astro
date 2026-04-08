@@ -1,0 +1,106 @@
+---
+const faqs = [
+  {
+    question: "¿Qué tipos de seguro ofrecen?",
+    answer:
+      "Ofrecemos seguros para auto, moto, hogar, comercio, ART y equipos electrónicos. Trabajamos con las principales compañías del mercado argentino para encontrar la mejor cobertura según tus necesidades.",
+  },
+  {
+    question: "¿Cuánto tarda en activarse mi póliza?",
+    answer:
+      "Una vez que elegís tu cobertura y completás la documentación, la póliza se activa de forma inmediata. Nuestro proceso es ágil y sin burocracia innecesaria.",
+  },
+  {
+    question: "¿Cómo hago un reclamo por siniestro?",
+    answer:
+      "Contactanos por WhatsApp o email y nos encargamos de gestionar todo el proceso. Te acompañamos en cada paso hasta la resolución del siniestro con eficacia y rapidez.",
+  },
+  {
+    question: "¿Puedo comparar precios entre compañías?",
+    answer:
+      "Sí, trabajamos con 6 compañías líderes: San Cristóbal, La Segunda, Federación Patronal, Mercantil Andina, Nación Seguros y Provincia Seguros. Te presentamos cotizaciones comparativas para que elijas la mejor opción.",
+  },
+  {
+    question: "¿El asesoramiento tiene costo?",
+    answer:
+      "No, nuestro asesoramiento es completamente gratuito. Nuestro trabajo es ayudarte a encontrar la cobertura ideal sin ningún costo adicional para vos.",
+  },
+];
+---
+
+<section class="bg-background py-24">
+  <div class="mx-auto max-w-3xl px-6">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <span
+        class="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+      >
+        Preguntas Frecuentes
+      </span>
+      <h2
+        class="section-title mb-4 text-4xl font-extrabold tracking-tight text-dark md:text-5xl"
+      >
+        Preguntas frecuentes sobre seguros
+      </h2>
+    </div>
+
+    <!-- Accordion -->
+    <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+      {
+        faqs.map((faq, index) => (
+          <div class="faq-item overflow-hidden rounded-2xl border border-muted-light/20 bg-white transition-all duration-300 hover:shadow-md" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button
+              class="faq-trigger flex w-full items-center justify-between p-6 text-left"
+              data-index={index}
+            >
+              <span class="pr-4 text-lg font-semibold text-dark" itemprop="name">
+                {faq.question}
+              </span>
+              <svg
+                class="faq-icon h-5 w-5 flex-shrink-0 text-primary transition-transform duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+              <p class="px-6 pb-6 leading-relaxed text-muted" itemprop="text">{faq.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll(".faq-trigger").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".faq-item");
+      const content = item?.querySelector(".faq-content") as HTMLElement;
+      const icon = item?.querySelector(".faq-icon");
+      const isOpen = content?.style.maxHeight !== "0px" && content?.style.maxHeight !== "";
+
+      // Close all
+      document.querySelectorAll(".faq-content").forEach((c) => {
+        (c as HTMLElement).style.maxHeight = "0";
+      });
+      document.querySelectorAll(".faq-icon").forEach((i) => {
+        i.classList.remove("rotate-180");
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen && content) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon?.classList.add("rotate-180");
+      }
+    });
+  });
+</script>

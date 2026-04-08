@@ -1,0 +1,119 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-dark pt-16 pb-8" itemscope itemtype="https://schema.org/InsuranceAgency">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-12 grid gap-12 md:grid-cols-3">
+      <!-- Brand -->
+      <div>
+        <img
+          src="/logo.png"
+          alt="Pato Ward Asesor de Seguros"
+          class="mb-4 h-12 w-auto brightness-0 invert"
+        />
+        <p class="text-sm leading-relaxed text-white/60">
+          <span itemprop="jobTitle">Productor Asesor de Seguros</span><br />
+          Matrícula SSN N° <span itemprop="identifier">101.762</span><br />
+          <span itemprop="areaServed">Argentina</span>
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="mb-4 text-sm font-semibold tracking-wider text-white/80 uppercase">
+          Navegación
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a
+              href="#inicio"
+              class="text-sm text-white/60 transition-colors hover:text-accent"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="#servicios"
+              class="text-sm text-white/60 transition-colors hover:text-accent"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="#nosotros"
+              class="text-sm text-white/60 transition-colors hover:text-accent"
+              >Nosotros</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contacto"
+              class="text-sm text-white/60 transition-colors hover:text-accent"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="mb-4 text-sm font-semibold tracking-wider text-white/80 uppercase">
+          Contacto
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a
+              href="mailto:pwardpas@gmail.com"
+              class="text-sm text-white/60 transition-colors hover:text-accent"
+              >pwardpas@gmail.com</a
+            >
+          </li>
+          <li>
+            <a
+              href="tel:+5491157054479"
+              class="text-sm text-white/60 transition-colors hover:text-accent"
+              >11 5705-4479</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://wa.me/5491157054479"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-white/60 transition-colors hover:text-accent"
+              >WhatsApp</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div
+      class="border-t border-white/10 pt-8"
+    >
+      <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+        <p class="text-xs text-white/40">
+          &copy; {currentYear} Pato Ward Asesor de Seguros. Todos los derechos
+          reservados.
+        </p>
+        <div class="flex items-center gap-4 text-xs text-white/40">
+          <span>
+            Organismo de control:
+            <a
+              href="https://www.argentina.gob.ar/ssn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/60 underline transition-colors hover:text-accent"
+            >
+              Superintendencia de Seguros de la Nación (SSN)
+            </a>
+          </span>
+          <span>|</span>
+          <span>Atención al asegurado: 0800-666-8400</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

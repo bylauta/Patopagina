@@ -1,0 +1,109 @@
+---
+const companies = [
+  { name: "San Cristóbal Seguros", logo: "/logos/san-cristobal.png" },
+  { name: "La Segunda Seguros", logo: "/logos/la-segunda.png" },
+  { name: "Federación Patronal Seguros", logo: "/logos/federacion-patronal.png" },
+  { name: "Mercantil Andina", logo: "/logos/mercantil-andina.png" },
+  { name: "Nación Seguros", logo: "/logos/nacion-seguros.png" },
+  { name: "Provincia Seguros", logo: "/logos/provincia-seguros.webp" },
+];
+---
+
+<section id="companias" class="relative overflow-hidden border-y border-muted-light/20 bg-white py-8 md:py-8">
+  <div class="mx-auto max-w-7xl px-6">
+    <p class="mb-5 text-center text-base font-semibold tracking-wider text-gray-800 uppercase md:mb-6 md:text-sm md:font-medium md:text-muted">
+      Compañías de Seguros
+    </p>
+  </div>
+
+  <!-- Mobile: grid estática con logos en color y grandes -->
+  <div class="mobile-companies-grid md:hidden">
+    <div class="mx-auto max-w-md px-4">
+      <div class="grid grid-cols-2 gap-3">
+        {companies.map((company, i) => (
+          <div class="mobile-logo-card flex items-center justify-center rounded-xl border border-gray-100 bg-gray-50/50 p-5" style={`--delay: ${i * 0.1}s`}>
+            <img
+              src={company.logo}
+              alt={company.name}
+              class="h-16 w-auto max-w-[170px] object-contain"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop: marquee con fade edges -->
+  <div class="marquee-container relative hidden md:block">
+    <!-- Fade edges -->
+    <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent"></div>
+
+    <div class="marquee-track flex items-center">
+      {[...Array(4)].map(() => (
+        <div class="marquee-group flex shrink-0 items-center">
+          {companies.map((company) => (
+            <div class="mx-8 flex-shrink-0">
+              <img
+                src={company.logo}
+                alt={company.name}
+                class="h-10 w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .mobile-logo-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: var(--delay);
+  }
+
+  .mobile-logo-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .marquee-track {
+    animation: marquee 25s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<script>
+  const grid = document.querySelector('.mobile-companies-grid');
+  if (grid) {
+    const cards = grid.querySelectorAll('.mobile-logo-card');
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        cards.forEach((card) => card.classList.add('visible'));
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+    observer.observe(grid);
+  }
+</script>

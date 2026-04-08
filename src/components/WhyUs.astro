@@ -1,0 +1,81 @@
+---
+const features = [
+  {
+    icon: `<svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+    title: "Atención Personalizada",
+    description:
+      "Brindamos un trato directo y humano. Nos tomamos el tiempo necesario para entender tu situación y ofrecerte la cobertura que realmente necesitás.",
+  },
+  {
+    icon: `<svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+    title: "Gestión con Rapidez",
+    description:
+      "Entendemos que el tiempo es clave. Por eso, agilizamos cada cotización y trámite para que cuentes con tu seguro de forma inmediata y sin vueltas.",
+  },
+  {
+    icon: `<svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    title: "Asesoramiento Profesional",
+    description:
+      "Con años de experiencia en el mercado, te asesoramos en la elección de las mejores pólizas, garantizando seguridad y respaldo para vos y tu negocio.",
+  },
+];
+
+const stats = [
+  { value: "10+", label: "Años de experiencia" },
+  { value: "500+", label: "Clientes protegidos" },
+  { value: "6", label: "Compañías asociadas" },
+  { value: "98%", label: "Satisfacción" },
+];
+---
+
+<section id="nosotros" class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <span
+        class="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent-dark"
+      >
+        ¿Por qué elegirnos?
+      </span>
+      <h2
+        class="section-title mb-4 text-4xl font-extrabold tracking-tight text-dark md:text-5xl"
+      >
+        Tu tranquilidad es nuestra prioridad
+      </h2>
+      <p class="section-description mx-auto max-w-2xl text-lg text-muted">
+        Más de 10 años asesorando en seguros en Argentina con el respaldo de las compañías más confiables del mercado.
+      </p>
+    </div>
+
+    <!-- Features -->
+    <div class="mb-20 grid gap-8 md:grid-cols-3">
+      {
+        features.map((feature) => (
+          <div class="feature-card group text-center">
+            <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:scale-110">
+              <Fragment set:html={feature.icon} />
+            </div>
+            <h3 class="mb-3 text-xl font-bold text-dark">{feature.title}</h3>
+            <p class="leading-relaxed text-muted">{feature.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Stats -->
+    <div
+      class="stats-container grid grid-cols-2 gap-8 rounded-3xl bg-gradient-to-br from-primary-dark to-primary p-10 md:grid-cols-4 md:p-14"
+    >
+      {
+        stats.map((stat) => (
+          <div class="stat-item text-center">
+            <div class="counter mb-2 text-4xl font-extrabold text-white md:text-5xl">
+              {stat.value}
+            </div>
+            <div class="text-sm font-medium text-white/70">{stat.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
